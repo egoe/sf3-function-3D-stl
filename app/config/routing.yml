@@ -1,0 +1,24 @@
+front:
+    resource: '@FrontBundle/Controller/'
+    type: annotation
+
+admin:
+    resource: '@AdminBundle/Controller/'
+    type: annotation
+
+rest_demo:
+    resource: '@RestBundle/Controller/DemoController.php'
+    prefix: /api
+    type: rest
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+easy_admin_bundle:
+    resource: "@EasyAdminBundle/Controller/"
+    type:     annotation
+    prefix:   /admin
+
+
+fos_oauth_server_token:
+    resource: "@FOSOAuthServerBundle/Resources/config/routing/token.xml"

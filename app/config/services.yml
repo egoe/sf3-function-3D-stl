@@ -1,0 +1,48 @@
+# Learn more about services, parameters and containers at
+# https://symfony.com/doc/current/service_container.html
+parameters:
+    #parameter_name: value
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        # automatically injects dependencies in your services
+        autowire: true
+        # automatically registers your services as commands, event subscribers, etc.
+        autoconfigure: true
+        # this means you cannot fetch services directly from the container via $container->get()
+        # if you need to do this, you can override this setting on individual services
+        public: false
+
+    # makes classes in src/CoreBundle available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    CoreBundle\:
+        resource: '../../src/CoreBundle/*'
+        exclude: '../../src/CoreBundle/{Entity,Repository,Tests}'
+    # controllers are imported separately to make sure they're public
+    # and have a tag that allows actions to type-hint services
+    AdminBundle\Controller\:
+        resource: '../../src/AdminBundle/Controller'
+        public: true
+        tags: ['controller.service_arguments']
+
+    FrontBundle\Controller\:
+        resource: '../../src/FrontBundle/Controller'
+        public: true
+        tags: ['controller.service_arguments']
+
+    CoreBundle\Event\UserEventSubscriber:
+        public: true
+        arguments:
+            $templating: '@templating'
+            $mailer: '@mailer'
+            $mailerFrom: '%mailer_from%'
+
+    CoreBundle\Manager\DemoManager:
+        public: false
+        arguments:
+            $em: '@doctrine.orm.entity_manager'
+
+    core.manager.demo:
+        alias: CoreBundle\Manager\DemoManager
+        public: true

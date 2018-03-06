@@ -1,0 +1,13 @@
+easy_admin:
+    site_name: 'ClickFatoura dashboard'
+    entities:
+        User:
+            class: CoreBundle\Entity\User
+            list:
+                fields: 
+                    - id
+                    - email
+                    - username
+                    - enabled
+                actions:
+                    - { name: 'user_confirm', type: 'route', icon: 'check', label: 'enable'}
