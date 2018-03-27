@@ -1,4 +1,7 @@
 {% extends "@Front/base.html.twig" %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('assets/css/upload.css') }}"/>
+{% endblock %}
 {% block body %}
 <h1>{{title}}</h1>
 <h4>Site version: {{version}}</h4>
@@ -13,4 +16,45 @@
 
 {# <form action="{{ oneup_uploader_endpoint('gallery') }}" class="dropzone" style="width:200px; height:200px; border:4px dashed black">
 </form> #}
+
+
+{% endblock %}
+{% block javascripts %}
+	<script type="text/javascript" src="{{ asset('assets/js/jquery-3.3.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/jquery.ui.widget.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/jquery.iframe-transport.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/jquery.fileupload.js') }}"></script>
+    <script type="text/javascript">
+    $(document).ready(function()
+    {
+        $('#fileupload').fileupload({
+
+            progressall: function (e, data) {
+                var progress = parseInt(data.loaded / data.total * 100, 10);
+                $('#progress .bar').css(
+                    'width',
+                    progress + '%'
+                );
+            },
+            dropZone: $('#dropzone')
+
+        });
+
+        $(document).bind('dragover', function (e) {
+            var dropZone = $('#dropzone'),
+                timeout = window.dropZoneTimeout;
+            if (timeout) {
+                clearTimeout(timeout);
+            } else {
+                dropZone.addClass('in');
+            }
+            var hoveredDropZone = $(e.target).closest(dropZone);
+            dropZone.toggleClass('hover', hoveredDropZone.length);
+            window.dropZoneTimeout = setTimeout(function () {
+                window.dropZoneTimeout = null;
+                dropZone.removeClass('in hover');
+            }, 100);
+        });
+    });
+    </script>
 {% endblock %}
