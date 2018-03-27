@@ -20,5 +20,5 @@ easy_admin_bundle:
     prefix:   /admin
 
 
-fos_oauth_server_token:
-    resource: "@FOSOAuthServerBundle/Resources/config/routing/token.xml"
+# fos_oauth_server_token:
+#     resource: "@FOSOAuthServerBundle/Resources/config/routing/token.xml"

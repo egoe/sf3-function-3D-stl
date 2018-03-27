@@ -5,7 +5,8 @@ imports:
     - { resource: easy_admin.yml }
     - { resource: fos_user.yml }
     - { resource: fos_rest.yml }
-    - { resource: fos_oauth_server.yml }
+    - { resource: bnbc_upload.yml }
+#    - { resource: fos_oauth_server.yml }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -14,7 +15,7 @@ parameters:
 
 framework:
     #esi: ~
-    translator: ~
+    translator: { fallback: en }
     secret: '%secret%'
     router:
         resource: '%kernel.project_dir%/app/config/routing.yml'
@@ -41,6 +42,8 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    form_themes:
+            - BnbcUploadBundle:Form:fields.html.twig
 
 # Doctrine Configuration
 doctrine:
@@ -71,3 +74,7 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+
+web_profiler:
+    toolbar:              true
+    intercept_redirects:  false
