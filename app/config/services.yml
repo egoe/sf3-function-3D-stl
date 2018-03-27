@@ -46,3 +46,21 @@ services:
     core.manager.demo:
         alias: CoreBundle\Manager\DemoManager
         public: true
+
+    CoreBundle\Manager\StlFileManager:
+        public: false
+        arguments:
+            $em: '@doctrine.orm.entity_manager'
+
+    core.manager.stlfile:
+        alias: CoreBundle\Manager\StlFileManager
+        public: true
+
+    app.upload_listener:
+        class: CoreBundle\Event\UploadListener
+        arguments: 
+            $em : "@doctrine.orm.entity_manager"
+            $stlFileManager : "@core.manager.stlfile"
+        tags:
+            - { name: kernel.event_listener, event: oneup_uploader.post_persist, method: onUpload }
+

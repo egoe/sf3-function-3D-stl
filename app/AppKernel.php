@@ -23,7 +23,7 @@ class AppKernel extends Kernel
             new AdminBundle\AdminBundle(),
             new FrontBundle\FrontBundle(),
             new RestBundle\RestBundle(),
-            new Bnbc\UploadBundle\BnbcUploadBundle(),
+            new Oneup\UploaderBundle\OneupUploaderBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

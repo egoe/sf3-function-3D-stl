@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use CoreBundle\Entity\File3d;
 
 class DefaultController extends Controller
 {
@@ -15,9 +16,17 @@ class DefaultController extends Controller
      */
     public function homeAction(Request $request)
     {
+
+        $file = new file3d();
+
+        $form = $this->createForm('CoreBundle\FormType\File3dType', $file);
+        $form->handleRequest($request);
+
         return $this->render('FrontBundle:Default:index.html.twig', array(
             'title' => 'Welcom to the homepage',
-            'version' => $this->get('core.manager.demo')->getVersion()
+            'version' => $this->get('core.manager.demo')->getVersion(),
+            'file' => $file,
+            'form' => $form->createView()
         ));
     }
 }

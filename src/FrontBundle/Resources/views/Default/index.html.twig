@@ -1,5 +1,16 @@
+{% extends "@Front/base.html.twig" %}
 {% block body %}
 <h1>{{title}}</h1>
 <h4>Site version: {{version}}</h4>
-<p>Home page content</p>
+<p>Upload your STL File :</p>
+
+
+<input id="fileupload" type="file" name="files[]" data-url="{{ oneup_uploader_endpoint('gallery') }}" multiple />
+<div id="progress">
+    <div class="bar" style="width: 0%;"></div>
+</div>
+<div id="dropzone" class="fade well">Drop files here</div>
+
+{# <form action="{{ oneup_uploader_endpoint('gallery') }}" class="dropzone" style="width:200px; height:200px; border:4px dashed black">
+</form> #}
 {% endblock %}

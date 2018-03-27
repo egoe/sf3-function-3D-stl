@@ -1,0 +1,6 @@
+oneup_uploader:
+    mappings:
+        gallery:
+            frontend: blueimp #dropzone # or any uploader you use in the frontend
+            storage:
+                directory: "%kernel.root_dir%/../data/uploads/"

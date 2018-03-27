@@ -5,7 +5,7 @@ imports:
     - { resource: easy_admin.yml }
     - { resource: fos_user.yml }
     - { resource: fos_rest.yml }
-    - { resource: bnbc_upload.yml }
+    - { resource: oneupuploader.yml }
 #    - { resource: fos_oauth_server.yml }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
@@ -42,8 +42,6 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
-    form_themes:
-            - BnbcUploadBundle:Form:fields.html.twig
 
 # Doctrine Configuration
 doctrine:

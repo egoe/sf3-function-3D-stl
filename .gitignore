@@ -16,3 +16,4 @@
 /vendor/
 /web/bundles/
 /docker-symfony/.env
+/data/*

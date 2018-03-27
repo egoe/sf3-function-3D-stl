@@ -4,55 +4,9 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "38e50d54d8d906c78556d259806f0676",
-    "content-hash": "13dedf522b743bff5b66547e82323684",
+    "hash": "edc518bf3cf872c3552ec16149cc4078",
+    "content-hash": "cb0f945ccab128a0acbdfe33ef4e87ea",
     "packages": [
-        {
-            "name": "bnbc/upload-bundle",
-            "version": "dev-master",
-            "target-dir": "Bnbc/UploadBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/bnbc/Symfony-Upload-Ajax.git",
-                "reference": "527f9221e99491d7e3637d32f5aefb8cf1221fb8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/bnbc/Symfony-Upload-Ajax/zipball/527f9221e99491d7e3637d32f5aefb8cf1221fb8",
-                "reference": "527f9221e99491d7e3637d32f5aefb8cf1221fb8",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.8",
-                "symfony/framework-bundle": "^2.3 || ^3.0",
-                "twig/twig": "*"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-0": {
-                    "Bnbc\\UploadBundle": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Benjamin Beyssac",
-                    "email": "benjamin.beyssac@gmail.com",
-                    "homepage": "http://www.benjamin-beyssac.fr",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Symfony Upload Ajax Bundle",
-            "keywords": [
-                "ajax",
-                "symfony",
-                "upload"
-            ],
-            "time": "2018-03-14 17:12:41"
-        },
         {
             "name": "composer/ca-bundle",
             "version": "1.1.0",
@@ -1769,6 +1723,91 @@
             "time": "2016-11-04 15:53:15"
         },
         {
+            "name": "oneup/uploader-bundle",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/1up-lab/OneupUploaderBundle.git",
+                "reference": "58b77cf8b2250009543983015708a8b1de372d8d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/1up-lab/OneupUploaderBundle/zipball/58b77cf8b2250009543983015708a8b1de372d8d",
+                "reference": "58b77cf8b2250009543983015708a8b1de372d8d",
+                "shasum": ""
+            },
+            "require": {
+                "paragonie/random_compat": "^1.1|^2.0",
+                "php": "^7.0",
+                "symfony/asset": "^3.0|^4.0",
+                "symfony/finder": "^3.0|^4.0",
+                "symfony/framework-bundle": "^3.0|^4.0",
+                "symfony/templating": "^3.0|^4.0",
+                "symfony/translation": "^3.0|^4.0",
+                "symfony/yaml": "^3.0|^4.0"
+            },
+            "require-dev": {
+                "amazonwebservices/aws-sdk-for-php": "1.5.*",
+                "knplabs/gaufrette": "0.2.*@dev",
+                "oneup/flysystem-bundle": "^1.2|^2.0|^3.0",
+                "phpunit/phpunit": "^6.5",
+                "sensio/framework-extra-bundle": "^5.0",
+                "symfony/browser-kit": "^3.0|^4.0",
+                "symfony/class-loader": "^3.0|^4.0",
+                "symfony/security-bundle": "^3.0|^4.0",
+                "symfony/var-dumper": "^3.0|^4.0",
+                "twistor/flysystem-stream-wrapper": "^1.0"
+            },
+            "suggest": {
+                "knplabs/knp-gaufrette-bundle": "0.1.*",
+                "oneup/flysystem-bundle": "^3.0",
+                "twistor/flysystem-stream-wrapper": "^1.0 (Required when using Flysystem)"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Oneup\\UploaderBundle\\": ""
+                },
+                "classmap": [
+                    "Tests/App/AppKernel.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jim Schmid",
+                    "email": "js@1up.io",
+                    "homepage": "http://1up.io",
+                    "role": "Developer"
+                },
+                {
+                    "name": "David Greminger",
+                    "email": "dg@1up.io",
+                    "homepage": "http://1up.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Handles multi file uploads in Symfony2. Features included: Chunked upload, Orphans management, Gaufrette support.",
+            "homepage": "http://1up.io",
+            "keywords": [
+                "FancyUpload",
+                "FineUploader",
+                "MooUpload",
+                "Uploadify",
+                "YUI3 Uploader",
+                "blueimp",
+                "dropzone",
+                "fileupload",
+                "jQuery File Uploader",
+                "plupload",
+                "upload"
+            ],
+            "time": "2018-02-07 14:18:09"
+        },
+        {
             "name": "pagerfanta/pagerfanta",
             "version": "v1.0.5",
             "source": {
@@ -3407,8 +3446,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "friendsofsymfony/oauth-server-bundle": 20,
-        "bnbc/upload-bundle": 20
+        "friendsofsymfony/oauth-server-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
