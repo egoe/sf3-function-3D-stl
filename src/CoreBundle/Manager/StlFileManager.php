@@ -17,7 +17,6 @@ class StlFileManager
 
   /**
    * Processing STL FILE
-   *
    */
   public function processStlFile()
   {
