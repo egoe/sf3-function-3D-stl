@@ -1,0 +1,9 @@
+#tip {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    background-color: #000000;
+    color: #FFFFFF;
+    font-family: "Monospace";
+    opacity: 0.8;
+}

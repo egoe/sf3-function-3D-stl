@@ -29,4 +29,23 @@ class DefaultController extends Controller
             'form' => $form->createView()
         ));
     }
+
+    /**
+     * @Route(path = "/local-file", name = "localfile")
+     */
+    public function localFileAction(Request $request)
+    {
+
+        $file = new file3d();
+
+        //$form = $this->createForm('CoreBundle\FormType\File3dType', $file);
+        //$form->handleRequest($request);
+
+        return $this->render('FrontBundle:Default:localFile.html.twig', array(
+            'title' => 'Test With LOCAL FILE without Upload',
+            'version' => $this->get('core.manager.demo')->getVersion(),
+            'file' => $file
+            //'form' => $form->createView()
+        ));
+    }
 }

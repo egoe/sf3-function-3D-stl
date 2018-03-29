@@ -1,0 +1,153 @@
+{% extends "@Front/base.html.twig" %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-theme.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/3d-viewer.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/upload.css') }}"/>
+{% endblock %}
+{% block body %}
+<h1>{{title}}</h1>
+<h4>Site version: {{version}}</h4>
+<p>Select your 3D File (.stl or .obj) :</p>
+
+<input type="file" id="fileupload" name="files[]" data-url="{{ oneup_uploader_endpoint('gallery') }}"/>
+<button id="btn-upload">Upload</button>
+{# <button>Upload this preview !</button> #}
+
+<hr>
+
+<!-- CANVAS VIEWER -->
+<div id="canvas-drop" width="400" height="400">
+    <table>
+		<tr>
+			<td>
+	            <div >
+					<div id="view3d">
+	                    <!-- HTML5 Canvas -->
+	                    <canvas id="cv" width="400" height="400"></canvas>
+	                        <h6>  </h6>
+                            <h6> Dimensions=<input type="text" id="DimX" maxlength="5" size="5" align="center" > x  
+                            				<input type="text" id="DimY" maxlength="5" size="5" align="center" > x 
+                            				<input type="text" id="DimZ" maxlength="5" size="5" align="center" >
+                            	
+							       <select class="unitselect" name="ListeDeroulanteUnit" id="unit">
+							           <option value="mm" selected>mm</option>
+							          <option value="cm">cm</option>
+							          <option value="m"> >m</option>
+							           <option value="inch">inch</option>
+							        </select>
+								</h6>
+							<p>
+                            	
+
+	                        <!-- Rotate and Zoom Tip -->
+	
+	                        <div class="panel panel-info" id="tip">
+	                            <table class="table">
+	                                <tr><td>
+	                                    Zoom </td> <td><kbd>Wheel</kbd>
+	                                    </td></tr>
+	                                <tr><td>
+	                                    Rotate </td> <td><kbd>Drag</kbd> 
+	                                    </td></tr>
+	                                <tr><td>
+	                                    Pan </td> <td><kbd>Ctrl</kbd> + <kbd>Drag</kbd>
+	                                    </td></tr>
+	                            </table>
+	                        </div>
+	
+	                    </div>
+	                                      <!-- Render type selection menu -->
+	                    <table class="table">
+	                        <tr><td>
+	                            <button class="btn btn-default btn-xs pull-left" id="info">
+	                                <span class="glyphicon glyphicon-info-sign"></span> Interact
+	                            </button>
+	                            </td>
+	                            <td>
+	                                <div class="btn-group dropup pull-right">
+	                                    <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+	                                        <span class="glyphicon glyphicon-eye-open"></span> View <span class="caret"></span>
+	                                    </button>
+	                                    <ul class="dropdown-menu" role="menu">
+	                                        <li><a href="#wireframe" class="rendermode">Wireframe</a></li>
+	                                        <li><a href="#point" class="rendermode">Points</a></li>
+	                                        <li><a href="#flat" class="rendermode">Filled</a></li>
+	                                        <li><a href="#smooth" class="rendermode">smooth</a></li>
+	                                        <li><a href="#texture" class="rendermode">texture</a></li>
+	                                        <li><a href="#textureflat" class="rendermode">texture filled</a></li>
+	                                        <li><a href="#texturesmooth" class="rendermode">texture smooth</a></li>
+	                                    </ul>
+	                                </div>
+	                        </tr>
+	                    </table> 
+	                    
+	                </div>
+	            </td><td>
+                <div >  
+                    
+                            <h4>  </h4>
+                            <small>
+                            	<p> Nb de composant	= <span id="NbPartie"> </span> </p>
+                            	<p> Volume	= <span id="totalVolume"> </span> <span id="unitVolume"> </span> </p>
+                            	<p> Densite = 10g/cm3 </p>
+                            	<p> Poids = <span id="poids"> </span> g </p>
+                            	<p> Volume en cm3 = <span id="totalVolumeBaseCal"> cm3</p>
+                            	<p> Couleur objet <input type="color" id="colorObject" /><p>
+                            	<p> Couleur BG1 <input type="color" id="colorBG1" /><p>
+                            	<p> Couleur BG2 <input type="color" id="colorBG2" /><p>
+                            	<p> Definition 
+                            	<select class="defSelect" name="ListeDeroulanteDef" id="defSelect">
+							           <option value="low">Basse</option>
+							          <option value="standard" selected>Standard</option>
+							          <option value="hight">Haute</option>
+							        </select>
+                            </p>
+                            
+                            
+                            </small>
+				</div>
+				</td><tr>
+				</table>
+        </div>
+
+<!-- END CANVAS VIEWER -->
+
+
+{% endblock %}
+{% block javascripts %}
+	<script type="text/javascript" src="{{ asset('assets/js/jquery-3.3.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/jquery-1.11.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/jsc3d.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/jsc3d.console.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/jquery.ui.widget.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/jquery.iframe-transport.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/jquery.fileupload.js') }}"></script>
+	<!-- JSC3D based code for 3D rendering -->
+    <script type="text/javascript" src="{{ asset('assets/js/object_viewer-alabaz.js') }}"></script>
+	<!-- END JSC3D based code for 3D rendering -->
+
+    <script type="text/javascript">
+    	$(function () {
+		    $('#fileupload').fileupload({
+		        dataType: 'json',
+		        add: function (e, data) {
+		            data.context = $('#btn-upload')
+		                .click(function () {
+		                    data.context = $('<p/>').text('Uploading...').replaceAll($(this));
+		                    data.submit();
+		                });
+		        },
+		        done: function (e, data) {
+		            data.context.text('Upload finished.');
+		        },
+		        formData: {'example': 'test'}
+		    });
+
+		    $("#btn-upload").hide();
+		});
+    	
+
+    </script>
+{% endblock %}

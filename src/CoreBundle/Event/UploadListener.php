@@ -19,11 +19,13 @@ class UploadListener
     {
         
         $file = $event->getFile();
+        $request = $event->getRequest();
 
         $response = $event->getResponse();
         $response['success'] = true;
         $response['file_name'] = $file->getFileName();
         $response['file_path'] = $file->getPathName();
+        $response['data'] = $request->get('example');
 
         var_dump($this->stlFileManager->processStlFile());
 
